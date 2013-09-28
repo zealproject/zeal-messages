@@ -1,0 +1,22 @@
+{
+    "name": "zealproject/zeal-messages",
+    "description": "Simple helper/controller plugin for showing app messages",
+    "license": "BSD-3-Clause",
+    "autoload": {
+        "psr-0": {
+            "ZealMessages": "src/"
+        },
+        "classmap": [
+            "./Module.php"
+        ]
+    },
+    "authors": [{
+        "name": "Tim Fountain",
+        "email": "tim@tfountain.co.uk",
+        "homepage": "http://tfountain.co.uk/",
+        "role": "developer"
+    }],
+    "require": {
+        "php": ">=5.3.3"
+    }
+}
