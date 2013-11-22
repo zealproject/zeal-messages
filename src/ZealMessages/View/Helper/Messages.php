@@ -7,16 +7,21 @@ use ZealMessages\Controller\Plugin\Messages as MessagesPlugin;
 
 class Messages extends AbstractHelper
 {
+    protected $messages;
+
+    public function __construct(array $messages)
+    {
+        $this->messages = $messages;
+    }
+
     public function __invoke()
     {
-        $messages = MessagesPlugin::getMessages();
-
-        if (count($messages) == 0) {
+        if (count($this->messages) == 0) {
             return '';
         }
 
         $html = '';
-        foreach ($messages as $key => $messagesArray) {
+        foreach ($this->messages as $key => $messagesArray) {
             $html .= '<ul class="'.$key.'"><li>'.implode('</li><li>', $messagesArray).'</li></ul>';
         }
 

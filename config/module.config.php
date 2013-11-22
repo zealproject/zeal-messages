@@ -12,11 +12,5 @@ return array(
         'invokables' => array(
             'Messages' => 'ZealMessages\Controller\Plugin\Messages',
         )
-    ),
-
-    'view_helpers' => array(
-        'invokables' => array(
-            'messages' => 'ZealMessages\View\Helper\Messages'
-        )
-    ),
+    )
 );

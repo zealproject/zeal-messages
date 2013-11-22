@@ -1,6 +1,6 @@
 <?php
 /**
- * Zeal ORM
+ * Zeal Messages
  *
  * @link      http://github.com/tfountain
  * @copyright Copyright (c) 2010-2013 Tim Fountain (http://tfountain.co.uk/)
@@ -8,8 +8,6 @@
  */
 
 namespace ZealMessages;
-
-use Zend\Mvc\MvcEvent;
 
 class Module
 {
@@ -26,6 +24,24 @@ class Module
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
+        );
+    }
+
+    public function getViewHelperConfig()
+    {
+        return array(
+            'factories' => array(
+                'messages' => function ($helperPluginManager) {
+                    $sm = $helperPluginManager->getServiceLocator();
+
+                    $messagesPlugin = $sm->get('ControllerPluginManager')->get('messages');
+                    $messages = $messagesPlugin->getMergedMessages();
+
+                    $helper = new View\Helper\Messages($messages);
+
+                    return $helper;
+                }
+            )
         );
     }
 }
